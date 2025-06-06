@@ -192,7 +192,15 @@ class MainWindow(QMainWindow):
         self.cur = self.cur1 + ':' + self.cur2 + ':' + self.cur3
 
 
-        self.label.setText(self.cur)
+        for i in range(len(self.cur)):
+            if self.cur[i] == '0' or self.cur[i] == ':':
+                pass
+            else:
+                break
+        self.mas = self.cur[i:]
+            
+
+        self.label.setText(self.mas)
 
     
 
