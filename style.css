@@ -55,3 +55,9 @@ QTimeEdit#timer {
     background: #FFF;
 }
 
+QTimeEdit::up-button,
+QTimeEdit::down-button {
+    width: 0px;
+    height: 0px;
+    border: none;
+}

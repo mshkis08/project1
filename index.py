@@ -22,6 +22,7 @@ from PyQt6.QtWidgets import (
     QVBoxLayout,
     QWidget,
     QGridLayout,
+    QAbstractSpinBox,
     
 )
 
@@ -58,9 +59,7 @@ class MainWindow(QMainWindow):
         self.button2 = QPushButton(self.title_2)
         self.button2.setFixedHeight(50)
         self.button2.setObjectName('button2')
-        self.button2.setVisible(False)
-        self.button2.setEnabled(False)
-        self.button2.setAutoDefault(False)
+        self.button2.setAutoDefault(True)
         self.button2.setFont(font_inter)
 
 
@@ -105,8 +104,14 @@ class MainWindow(QMainWindow):
     def time_changed(self, x):
         self.cur = str(self.timer.time().toPyTime())
 
-        
-        self.label.setText(self.cur)
+        for i in range(len(self.cur)):
+            if self.cur[i] == '0' or self.cur[i] == ':':
+                pass
+            else:
+                break
+        self.mas = self.cur[i:]
+
+        self.label.setText(self.mas)
 
 
     def but1_clicked(self):
@@ -130,16 +135,11 @@ class MainWindow(QMainWindow):
     def but2_clicked(self):
         self.title_1 = 'Запустить'
         self.button1.setText(self.title_1)
-        self.button1.setVisible(True)
-        self.button1.setEnabled(True)
-        self.button1.setAutoDefault(True)
             
-        self.button2.setVisible(False)
-        self.button2.setEnabled(False)
-        self.button2.setAutoDefault(False)
 
         self.timer.setVisible(True)
         self.timer.setTime(QTime(0, 0, 0))
+
 
         self.tru_timer.stop()
 
@@ -162,15 +162,8 @@ class MainWindow(QMainWindow):
         else:
             self.tru_timer.stop()
 
-            self.button1.setVisible(False)
-            self.button1.setEnabled(False)
             self.title_1 = 'Запустить'
             self.button1.setText(self.title_1)
-            self.button1.setAutoDefault(False)
-
-            self.button2.setVisible(True)
-            self.button2.setEnabled(True)
-            self.button2.setAutoDefault(True)
 
             self.button2.setFocus()
 
