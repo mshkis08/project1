@@ -104,6 +104,8 @@ class MainWindow(QMainWindow):
 
     def time_changed(self, x):
         self.cur = str(self.timer.time().toPyTime())
+
+        
         self.label.setText(self.cur)
 
 
@@ -152,12 +154,11 @@ class MainWindow(QMainWindow):
             self.el3 -= 1
         elif self.el2 != 0:
             self.el2 -= 1
-            if self.el2 == 0:
-                self.el3 = 59
+            self.el3 = 59
         elif self.el1 != 0:
             self.el1 -= 1
-            if self.el1 == 0:
-                self.el2 = 59
+            self.el2 = 59
+            self.el3 = 59
         else:
             self.tru_timer.stop()
 
