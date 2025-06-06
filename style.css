@@ -1,0 +1,57 @@
+
+
+
+#container {
+    background-color: #CADDDD;
+}
+
+QPushButton#button1 {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    border-radius: 24px;
+    background: #088;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.28);
+}
+
+QPushButton#button2 {
+    color: #088;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.00);
+}
+
+QLabel#label {
+    color: #1E4949;
+    text-align: center;
+    font-family: "Climate Crisis";
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+QTimeEdit#timer {
+    color: #088;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    border-radius: 4px;
+    border: 1px solid #EAEAEA;
+    background: #FFF;
+}
+
