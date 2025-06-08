@@ -1,5 +1,6 @@
-from PyQt6.QtCore import Qt, QTime, QTimer
+from PyQt6.QtCore import Qt, QTime, QTimer, QUrl
 from PyQt6.QtGui import QFont, QFontDatabase
+from PyQt6.QtMultimedia import QSoundEffect
 from PyQt6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -32,6 +33,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+
         self.setWindowTitle('таймер')
         self.setFixedSize(400,300)
 
@@ -47,6 +49,10 @@ class MainWindow(QMainWindow):
         self.title_1 = 'Запустить'
         self.title_2 = 'restart'
         self.cur = '00:00:00'
+
+
+        self.sound = QSoundEffect()
+        self.sound.setSource(QUrl.fromLocalFile('sound/vadim-i-budilnik.wav'))
 
 
         self.button1 = QPushButton(self.title_1)
@@ -73,13 +79,13 @@ class MainWindow(QMainWindow):
         self.tru_timer = QTimer(self)
         
 
-        self.label = QLabel('00:00:00')
+        self.label = QLabel('0')
         self.label.setObjectName('label')
         self.label.setFont(font_climate)
 
 
         layout = QVBoxLayout()
-        layout.addWidget(self.label, alignment=Qt.AlignmentFlag.AlignHCenter) 
+        layout.addWidget(self.label, alignment=Qt.AlignmentFlag.AlignHCenter)
         layout.addWidget(self.timer)
         layout.addWidget(self.button1)
         layout.addWidget(self.button2)
@@ -119,15 +125,14 @@ class MainWindow(QMainWindow):
             self.title_1 = 'stop'
             self.button1.setText(self.title_1)
 
-            self.timer.setVisible(False)
+            self.timer.setStyleSheet("background-color: transparent; color: transparent; border: 0px")
+            self.timer.setEnabled(False)
 
             self.tru_timer.start(1000)
 
         else:
             self.title_1 = 'Запустить'
             self.button1.setText(self.title_1)
-
-            self.timer.setVisible(True)
 
             self.tru_timer.stop()
 
@@ -139,6 +144,11 @@ class MainWindow(QMainWindow):
 
         self.timer.setVisible(True)
         self.timer.setTime(QTime(0, 0, 0))
+        self.timer.setStyleSheet("background-color: #FFF; color: #088; border: 1px solid #EAEAEA")
+        self.timer.setEnabled(True)
+
+
+        self.label.setObjectName('label')
 
 
         self.tru_timer.stop()
@@ -161,6 +171,8 @@ class MainWindow(QMainWindow):
             self.el3 = 59
         else:
             self.tru_timer.stop()
+
+            self.sound.play()
 
             self.title_1 = 'Запустить'
             self.button1.setText(self.title_1)
