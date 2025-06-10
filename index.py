@@ -41,18 +41,18 @@ class MainWindow(QMainWindow):
         id = QFontDatabase.addApplicationFont("fonts/Inter-VariableFont_opsz,wght.ttf")
         families = QFontDatabase.applicationFontFamilies(id)
         font_inter = QFont(families[0])
-        id = QFontDatabase.addApplicationFont("fonts/Climate_Crisis/ClimateCrisis-Regular-VariableFont_YEAR.ttf")
+        id = QFontDatabase.addApplicationFont("fonts/Roboto-VariableFont_wdth,wght.ttf")
         families = QFontDatabase.applicationFontFamilies(id)
-        font_climate = QFont(families[0])
+        font_roboto = QFont(families[0])
 
 
         self.title_1 = 'Запустить'
-        self.title_2 = 'restart'
+        self.title_2 = 'Очистить'
         self.cur = '00:00:00'
 
 
         self.sound = QSoundEffect()
-        self.sound.setSource(QUrl.fromLocalFile('sound/vadim-i-budilnik.wav'))
+        self.sound.setSource(QUrl.fromLocalFile('sound/s3.wav'))
 
 
         self.button1 = QPushButton(self.title_1)
@@ -81,7 +81,7 @@ class MainWindow(QMainWindow):
 
         self.label = QLabel('0')
         self.label.setObjectName('label')
-        self.label.setFont(font_climate)
+        self.label.setFont(font_roboto)
 
 
         layout = QVBoxLayout()
@@ -121,8 +121,9 @@ class MainWindow(QMainWindow):
 
 
     def but1_clicked(self):
-        if self.title_1 == 'Запустить':
-            self.title_1 = 'stop'
+        self.button2.setEnabled(True)
+        if self.title_1 == 'Запустить' or self.title_1 == 'Продолжить':
+            self.title_1 = 'Остановить'
             self.button1.setText(self.title_1)
 
             self.timer.setStyleSheet("background-color: transparent; color: transparent; border: 0px")
@@ -131,7 +132,7 @@ class MainWindow(QMainWindow):
             self.tru_timer.start(1000)
 
         else:
-            self.title_1 = 'Запустить'
+            self.title_1 = 'Продолжить'
             self.button1.setText(self.title_1)
 
             self.tru_timer.stop()
@@ -140,6 +141,7 @@ class MainWindow(QMainWindow):
     def but2_clicked(self):
         self.title_1 = 'Запустить'
         self.button1.setText(self.title_1)
+        self.button1.setEnabled(True)
             
 
         self.timer.setVisible(True)
@@ -151,7 +153,13 @@ class MainWindow(QMainWindow):
         self.label.setObjectName('label')
 
 
+        self.button2.setEnabled(False)
+
+
         self.tru_timer.stop()
+
+
+        self.sound.stop()
 
 
     def start_count(self):
@@ -176,6 +184,7 @@ class MainWindow(QMainWindow):
 
             self.title_1 = 'Запустить'
             self.button1.setText(self.title_1)
+            self.button1.setEnabled(False)
 
             self.button2.setFocus()
 

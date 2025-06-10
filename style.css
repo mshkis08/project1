@@ -1,9 +1,6 @@
-
-
-
 #container {
-    background-color: #CADDDD;
-}
+    background-image: url(0.jpg);            
+}   
 
 QPushButton#button1 {
     color: #FFF;
@@ -14,12 +11,12 @@ QPushButton#button1 {
     font-weight: 500;
     line-height: normal;
 
-    border-radius: 24px;
-    background: #088;
+    border-radius: 12px;
+    background: rgba(30, 30, 30, 0.64);
 }
 
 QPushButton#button2 {
-    color: #088;
+    color: #1E1E1E;
     text-align: center;
     font-family: Inter;
     font-size: 16px;
@@ -27,22 +24,22 @@ QPushButton#button2 {
     font-weight: 500;
     line-height: normal;
 
-    border-radius: 24px;
-    background: rgba(255, 255, 255, 0.00);
+    border-radius: 12px;
+    background: rgba(230, 146, 97, 0.00);
 }
 
 QLabel#label {
-    color: #1E4949;
+    color: #1E1E1E;
     text-align: center;
-    font-family: "Climate Crisis";
-    font-size: 44px;
+    font-family: Roboto;
+    font-size: 64px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
 QTimeEdit#timer {
-    color: #088;
+    color: #1E1E1E;
     font-family: Inter;
     font-size: 12px;
     font-style: normal;
@@ -59,4 +56,28 @@ QTimeEdit::down-button {
     width: 0px;
     height: 0px;
     border: none;
+}
+
+
+
+QPushButton#button1:hover {
+    border-radius: 12px;
+    background: #1E1E1E;
+}
+
+QPushButton#button2:hover {
+    color: #E54100;
+}
+
+
+QPushButton#button1:disabled {
+    border-radius: 12px;
+    background: rgba(30, 30, 30, 0.40);
+    color: rgba(255, 255, 255, 0.40);
+}
+
+QPushButton#button2:disabled {
+    border-radius: 12px;
+    background: rgba(230, 146, 97, 0.00);
+    color: rgba(30, 30, 30, 0.40);
 }
