@@ -52,7 +52,7 @@ class MainWindow(QMainWindow):
 
 
         self.sound = QSoundEffect()
-        self.sound.setSource(QUrl.fromLocalFile('sound/s3.wav'))
+        self.sound.setSource(QUrl.fromLocalFile('sound/s1.wav'))
 
 
         self.button1 = QPushButton(self.title_1)
@@ -67,6 +67,7 @@ class MainWindow(QMainWindow):
         self.button2.setObjectName('button2')
         self.button2.setAutoDefault(True)
         self.button2.setFont(font_inter)
+        self.button2.setEnabled(False)
 
 
         self.timer = QTimeEdit()    

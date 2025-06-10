@@ -51,13 +51,13 @@ QTimeEdit#timer {
     background: #FFF;
 }
 
+
 QTimeEdit::up-button,
 QTimeEdit::down-button {
     width: 0px;
     height: 0px;
     border: none;
 }
-
 
 
 QPushButton#button1:hover {
@@ -81,3 +81,13 @@ QPushButton#button2:disabled {
     background: rgba(230, 146, 97, 0.00);
     color: rgba(30, 30, 30, 0.40);
 }
+
+
+/* QPushButton#button1:focus {
+    border-radius: 12px;
+    background: #1E1E1E;
+}
+
+QPushButton#button2:focus {
+    color: #E54100;
+} */
