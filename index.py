@@ -41,9 +41,9 @@ class MainWindow(QMainWindow):
         id = QFontDatabase.addApplicationFont("fonts/Inter-VariableFont_opsz,wght.ttf")
         families = QFontDatabase.applicationFontFamilies(id)
         font_inter = QFont(families[0])
-        id = QFontDatabase.addApplicationFont("fonts/Roboto-VariableFont_wdth,wght.ttf")
+        id = QFontDatabase.addApplicationFont("fonts/Onest-VariableFont_wght.ttf")
         families = QFontDatabase.applicationFontFamilies(id)
-        font_roboto = QFont(families[0])
+        font_onest = QFont(families[0])
 
 
         self.title_1 = 'Запустить'
@@ -81,7 +81,7 @@ class MainWindow(QMainWindow):
 
         self.label = QLabel('0')
         self.label.setObjectName('label')
-        self.label.setFont(font_roboto)
+        self.label.setFont(font_onest)
 
 
         layout = QVBoxLayout()
