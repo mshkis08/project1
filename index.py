@@ -24,9 +24,14 @@ from PyQt6.QtWidgets import (
     QWidget,
     QGridLayout,
     QAbstractSpinBox,
-    
 )
+import os
+import sys
+import re
 
+def resource_path(relative_path):
+    base_path = getattr(sys, '_MEIPASS', os.path.abspath("."))
+    return os.path.join(base_path, relative_path)
 
 class MainWindow(QMainWindow):
 
@@ -38,10 +43,10 @@ class MainWindow(QMainWindow):
         self.setFixedSize(400,300)
 
 
-        id = QFontDatabase.addApplicationFont("fonts/Inter-VariableFont_opsz,wght.ttf")
+        id = QFontDatabase.addApplicationFont(resource_path("fonts/Inter-VariableFont_opsz,wght.ttf"))
         families = QFontDatabase.applicationFontFamilies(id)
         font_inter = QFont(families[0])
-        id = QFontDatabase.addApplicationFont("fonts/Onest-VariableFont_wght.ttf")
+        id = QFontDatabase.addApplicationFont(resource_path("fonts/Onest-VariableFont_wght.ttf"))
         families = QFontDatabase.applicationFontFamilies(id)
         font_onest = QFont(families[0])
 
@@ -52,7 +57,7 @@ class MainWindow(QMainWindow):
 
 
         self.sound = QSoundEffect()
-        self.sound.setSource(QUrl.fromLocalFile('sound/s1.wav'))
+        self.sound.setSource(QUrl.fromLocalFile(resource_path('sound/s4.wav')))
 
 
         self.button1 = QPushButton(self.title_1)
@@ -220,11 +225,18 @@ class MainWindow(QMainWindow):
 
     
 
-
 app = QApplication([])
 
-with open('style.css') as fout:
-    app.setStyleSheet(fout.read())
+with open(resource_path('style.css')) as fout:
+    css = fout.read()
+    
+    def rewrite_url(match):
+        rel_path = match.group(1).strip('\'"')  # убираем кавычки
+        abs_path = resource_path(rel_path).replace("\\", "/")  # PyQt любит прямые слэши
+        return f'url("{abs_path}")'
+
+    css = re.sub(r'url\((.*?)\)', rewrite_url, css)
+    app.setStyleSheet(css)
 
 window = MainWindow()
 window.show()

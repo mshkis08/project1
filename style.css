@@ -1,5 +1,5 @@
 #container {
-    background-image: url(0.jpg);            
+    background-image: url("pics/man.jpg");            
 }   
 
 QPushButton#button1 {
@@ -82,12 +82,3 @@ QPushButton#button2:disabled {
     color: rgba(30, 30, 30, 0.40);
 }
 
-
-/* QPushButton#button1:focus {
-    border-radius: 12px;
-    background: #1E1E1E;
-}
-
-QPushButton#button2:focus {
-    color: #E54100;
-} */
