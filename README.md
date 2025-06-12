@@ -1,5 +1,8 @@
-добро пожаловать!
+Добро пожаловать!
+Это мой первый проект с использованием github, следовательно и первое readme.
 
-это мой первый проект с использованием github, следовательно и первое readme.
+Представляю вам таймер на пк с прикольным интерфейсом и рингтоном.
 
-это таймер на пк
+сборка на windows: pyinstaller index.py --onefile --windowed --add-data "style.css;." --add-data "fonts;fonts" --add-data "sound;sound" --add-data "pics;pics"
+сборка на mac: 
+
