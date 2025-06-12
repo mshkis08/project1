@@ -57,7 +57,7 @@ class MainWindow(QMainWindow):
 
 
         self.sound = QSoundEffect()
-        self.sound.setSource(QUrl.fromLocalFile(resource_path('sound/s4.wav')))
+        self.sound.setSource(QUrl.fromLocalFile(resource_path('sound/s1.wav')))
 
 
         self.button1 = QPushButton(self.title_1)
@@ -105,12 +105,12 @@ class MainWindow(QMainWindow):
         self.tru_timer.timeout.connect(self.start_count)
 
 
-        container = QWidget()
-        container.setLayout(layout)
-        container.setObjectName('container')
+        self.container = QWidget()
+        self.container.setLayout(layout)
+        self.container.setObjectName('container')
 
 
-        self.setCentralWidget(container)
+        self.setCentralWidget(self.container)
 
 
     def time_changed(self, x):
@@ -131,6 +131,7 @@ class MainWindow(QMainWindow):
         if self.title_1 == 'Запустить' or self.title_1 == 'Продолжить':
             self.title_1 = 'Остановить'
             self.button1.setText(self.title_1)
+            self.button1.clearFocus()
 
             self.timer.setStyleSheet("background-color: transparent; color: transparent; border: 0px")
             self.timer.setEnabled(False)
@@ -140,6 +141,7 @@ class MainWindow(QMainWindow):
         else:
             self.title_1 = 'Продолжить'
             self.button1.setText(self.title_1)
+            self.button1.clearFocus()
 
             self.tru_timer.stop()
 
@@ -157,6 +159,9 @@ class MainWindow(QMainWindow):
 
 
         self.label.setObjectName('label')
+
+
+        self.container.setStyleSheet("#container {background-image: url('pics/man.jpg');}")
 
 
         self.button2.setEnabled(False)
@@ -186,13 +191,13 @@ class MainWindow(QMainWindow):
         else:
             self.tru_timer.stop()
 
+            self.container.setStyleSheet("#container {background-image: url('pics/man1.jpg');}")
+
             self.sound.play()
 
             self.title_1 = 'Запустить'
             self.button1.setText(self.title_1)
             self.button1.setEnabled(False)
-
-            self.button2.setFocus()
 
 
         self.cur1 = str(self.el1)

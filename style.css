@@ -1,5 +1,5 @@
 #container {
-    background-image: url("pics/man.jpg");            
+    background-image: url('pics/man.jpg');            
 }   
 
 QPushButton#button1 {
