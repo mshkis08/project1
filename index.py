@@ -160,8 +160,8 @@ class MainWindow(QMainWindow):
 
         self.label.setObjectName('label')
 
-
-        self.container.setStyleSheet("#container {background-image: url('pics/man.jpg');}")
+        image_path = resource_path("pics/man.jpg").replace("\\", "/")
+        self.container.setStyleSheet(f"#container {{background-image: url('{image_path}');}}")
 
 
         self.button2.setEnabled(False)
@@ -191,7 +191,8 @@ class MainWindow(QMainWindow):
         else:
             self.tru_timer.stop()
 
-            self.container.setStyleSheet("#container {background-image: url('pics/man1.jpg');}")
+            image_path = resource_path("pics/man1.jpg").replace("\\", "/")
+            self.container.setStyleSheet(f"#container {{background-image: url('{image_path}');}}")
 
             self.sound.play()
 
@@ -236,8 +237,8 @@ with open(resource_path('style.css')) as fout:
     css = fout.read()
     
     def rewrite_url(match):
-        rel_path = match.group(1).strip('\'"')  # убираем кавычки
-        abs_path = resource_path(rel_path).replace("\\", "/")  # PyQt любит прямые слэши
+        rel_path = match.group(1).strip('\'"') 
+        abs_path = resource_path(rel_path).replace("\\", "/")  
         return f'url("{abs_path}")'
 
     css = re.sub(r'url\((.*?)\)', rewrite_url, css)
