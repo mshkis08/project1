@@ -5,10 +5,3 @@
 сборка на windows: pyinstaller index.py --onefile --windowed --name "таймер" --add-data "style.css;." --add-data "fonts;fonts" --add-data "sound;sound" --add-data "pics;pics"
 сборка на mac: pyinstaller index.py --onefile --windowed --name "таймер" --add-data "style.css:." --add-data "fonts:fonts" --add-data "sound:sound" --add-data "pics:pics"
 
-алгоритм компиляции (сборки)
-1. чтобы собрать нужно установить pyinstaller через командную строку:  pip install pyinstaller
-2. потом:  cd "адрес папки проекта"
-3. потом:  сборка на виндовс или на мак
-4. в папке dist будет лежать наш таймер
-
-
